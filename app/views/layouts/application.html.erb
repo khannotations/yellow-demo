@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YellowDemo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" sizes="192x192" href="https://static.wixstatic.com/media/c02fc6_42d9a724ecdd4f8aa3669246e4e90867%7Emv2.jpg/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/c02fc6_42d9a724ecdd4f8aa3669246e4e90867%7Emv2.jpg" type="image/jpeg"/>
+    <link rel="shortcut icon" href="https://static.wixstatic.com/media/c02fc6_42d9a724ecdd4f8aa3669246e4e90867%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/c02fc6_42d9a724ecdd4f8aa3669246e4e90867%7Emv2.jpg" type="image/jpeg"/>
+    <link rel="apple-touch-icon" href="https://static.wixstatic.com/media/c02fc6_42d9a724ecdd4f8aa3669246e4e90867%7Emv2.jpg/v1/fill/w_180%2Ch_180%2Clg_1%2Cusm_0.66_1.00_0.01/c02fc6_42d9a724ecdd4f8aa3669246e4e90867%7Emv2.jpg" type="image/jpeg"/>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    
+    <!-- Intl phone -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js"></script>
+    <style>
+      .iti { display: block; }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav bg-black py-3 d-flex justify-content-center">
+      <%= image_tag("yellow-logo.webp", alt: "YellowDemo", height: "40px") %>
+    </div>
+    <div class="container-xxl py-5">
+      <%= yield %>
+    </div>
+
+    <footer class="bg-light d-flex justify-content-center py-4">
+      <div class="text-center text-secondary">
+        &copy; <%= Time.current.year %> Rafi Khan
+      </p>
+    </footer>
+
+    <!-- Activate intl phone: https://github.com/jackocnr/intl-tel-input?tab=readme-ov-file#getting-started-using-a-cdn -->
+    <script>
+      const input = document.querySelector(".intl-phone");
+      window.intlTelInput(input, {
+          hiddenInput: function(telInputName) {
+            return {
+              phone: telInputName,
+            }
+          },
+          separateDialCode: true,
+          nationalMode: false,
+          countryOrder: ['ke', 'mw', 'ug', 'mg', 'rw'],
+          initialCountry: "ke",
+          utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
+      });
+      const iti_input = document.querySelector(".iti__tel-input");
+      iti_input.classList.add("form-control"); // Style like Bootstrap.
+    </script>
+  </body>
+</html>

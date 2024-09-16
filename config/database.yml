@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: yellow_demo_development
+
+test:
+  <<: *default
+  database: yellow_demo_test
+
+production:
+  <<: *default
+  database: yellow_demo_production
+  username: yellow_demo
+  password: <%= ENV['YELLOW_DEMO_DATABASE_PASSWORD'] %>

@@ -1,0 +1,23 @@
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 720px,
+    xl: 720px,
+    xxl: 720px
+);
+
+$font-family-base: Arial, Helvetica, sans-serif;
+
+$primary: #fcd806;
+
+@import "bootstrap";
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}

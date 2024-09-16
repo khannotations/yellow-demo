@@ -1,0 +1,37 @@
+<h3 class="mb-4">Phone successfully linked! Time to make the payment.</h3>
+
+<%= render "customers/info" , customer: @customer %>
+
+<% if flash[:alert].present? %>
+    <div class="alert alert-danger">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
+
+<% if @payment.errors.any? %>
+    <div class="alert alert-danger">
+        <% @payment.errors.full_messages.each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+<% end %>
+
+<h4>Amount to pay: <b><%= humanized_money_with_symbol @customer.registration_phone_price %></b></h4>
+
+<%= form_for [@customer, @payment] do |f| %>
+    <div class="row gy-3">
+        <div class="col-md-6">
+            <%= f.label :phone %>
+            <br>
+            <%= f.text_field :phone, required: true, class: "intl-phone" %>
+        </div>
+        <div class="col-md-6">
+            <%= f.label :telco, "Payment telco" %>
+            <%= f.select :telco, options_for_select(@telcos), {}, required: true, class: "form-control" %>
+        </div>
+        <div class="col-12">
+            <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>
+        </div>
+    </div>
+<% end %>
+

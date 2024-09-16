@@ -1,0 +1,21 @@
+<h3 class="mb-4">Your payment is pending...hang tight!</h3>
+
+<div class="d-flex justify-content-center">
+  <%= image_tag "loading.gif", style: { width: "100%", max_width: "300px" } %>
+</div>
+
+<div class="row justify-content-center gy-3">
+  <div class="col-md-6 d-flex justify-content-center mb-3">
+    <%= form_for [@customer, @payment] do |f| %>
+      <%= f.hidden_field :status, value: "paid" %>
+      <%= f.submit "Payment was successful", class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+  <div class="col-md-6 d-flex justify-content-center mb-3">
+    <%= form_for [@customer, @payment] do |f| %>
+      <%= f.hidden_field :status, value: "failed" %>
+      <%= f.submit "Payment was unsuccessful", class: "btn btn-danger btn-lg" %>
+    <% end %>
+  </div>
+</div>
+

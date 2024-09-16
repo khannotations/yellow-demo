@@ -1,0 +1,37 @@
+<div class="p-3 bg-light em rounded mb-4">
+    <p>
+        Customer name: <b><%= customer.full_name %></b>
+    </p> 
+    <p>
+        ID Number: <b><%= customer.id_number %></b>
+    </p>
+    <p>
+        Phone: <b><%= customer.phone %></b>
+    </p>
+    <p>
+        Birthday: <b><%= customer.birthday %></b>
+    </p>
+    <p>
+        Registration phone price: <b><%= humanized_money_with_symbol customer.registration_phone_price %></b>
+    </p>
+    <p>
+        Approved at: <b><%= customer.approved_at %></b>
+    </p>
+    <% if customer.phones.any? %>
+        <hr>
+        <% customer.phones.each_with_index do |phone, index| %>
+            <p>
+                IMEI: <b><%= phone.imei %></b>
+            </p>
+        <% end %>
+    <% end %>
+    <% if customer.payments.any? %>
+        <hr>
+        <% customer.payments.each_with_index do |payment, index| %>
+            <% klass = payment.paid? ? "text-success" : (payment.failed? ? "text-danger" : "") %>
+            <p class="<%= klass %>">
+                Payment on <%= payment.updated_at.to_date %> for <%= humanized_money_with_symbol payment.amount %> - <b><%= payment.status %></b>
+            </p>
+        <% end %>
+    <% end %>
+</div>
