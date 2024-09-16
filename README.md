@@ -1,9 +1,9 @@
 ## Yellow Demo App
 
 Creates a simple app with the following functionality:
-- Create a customer and do validity checks
-- Associate a valid customer with a IMEI number
-- Allow for a payment (successful or unsuccessful)
+- Create a customer and conduct validity checks
+- Associate valid customers with a IMEI number
+- Allow for payment for the new phone (successful or unsuccessful)
 
 #### Running the app
 
@@ -23,18 +23,18 @@ To install the app:
 
 There are 3 models and associated tables. The fields for each model are annotated in each file. The validations are visible in the code itself.
 
-- (Customer)[https://github.com/khannotations/yellow-demo/blob/main/app/models/customer.rb]
-- (Phone)[https://github.com/khannotations/yellow-demo/blob/main/app/models/phone.rb]
-- (Payment)[https://github.com/khannotations/yellow-demo/blob/main/app/models/payment.rb]
+- [Customer](https://github.com/khannotations/yellow-demo/blob/main/app/models/customer.rb)
+- [Phone](https://github.com/khannotations/yellow-demo/blob/main/app/models/phone.rb)
+- [Payment](https://github.com/khannotations/yellow-demo/blob/main/app/models/payment.rb)
 
 
 #### Controllers
 
 Each flow through the app is managed by a controller corresponding to each model. 
 
-- (CustomersController)[https://github.com/khannotations/yellow-demo/blob/main/app/controllers/customers_controller.rb]
-- (PhonesController)[https://github.com/khannotations/yellow-demo/blob/main/app/controllers/phones_controller.rb]
-- (PaymentsController)[https://github.com/khannotations/yellow-demo/blob/main/app/controllers/payments_controller.rb]
+- [CustomersController](https://github.com/khannotations/yellow-demo/blob/main/app/controllers/customers_controller.rb)
+- [PhonesController](https://github.com/khannotations/yellow-demo/blob/main/app/controllers/phones_controller.rb)
+- [PaymentsController](https://github.com/khannotations/yellow-demo/blob/main/app/controllers/payments_controller.rb)
 
 The customer and phones controller support POST requests to create the associated models, while the payments controller supports both a POST request to create a payment, as well as a PUT request to update the status of the payment (which the payment provider would call back to).
 
